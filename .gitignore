@@ -1,0 +1,4 @@
+# Dart tool package: lockfile is not committed (see pub.dev convention)
+.dart_tool/
+pubspec.lock
+build/
