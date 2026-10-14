@@ -12,6 +12,13 @@ class RunCommand extends fltool.RunCommand with FlutterpiCommandMixin {
     usesDeviceManager();
     usesEngineFlavorOption();
     usesDebugSymbolsOption();
+
+    // PATCH (local fork): register --track-widget-creation so debug kernels
+    // built via `flutterpi_tool run` include widget creation tracking.
+    // Without this, getBuildInfo() reports trackWidgetCreation=false and the
+    // kernel mismatches the tracked code pushed by hot reload, crashing with
+    // "No constructor ... with matching arguments" / "Lookup failed: _location".
+    usesTrackWidgetCreation(verboseHelp: false);
   }
 
   @protected
